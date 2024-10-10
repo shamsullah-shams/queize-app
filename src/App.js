@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios";
+import React, { useState } from "react";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [todo, setTodo] = useState([]);
+
+  const loadData = () => {
+    try {
+      axios
+        .get("https://jsonplaceholder.typicode.com/todos?_limit=10")
+        .then((response) => {
+          setTodo(response.data);
+        })
+        .catch((error) => console.log(error));
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ textAlign: "center" }}>
+      <h1>Testing Axios</h1>
+      {todo.map((item, index) => {
+        return (
+          <div className="data" key={index}>
+            {item.title}
+          </div>
+        );
+      })}
+
+      <button onClick={loadData}>Load Data</button>
     </div>
   );
-}
+};
 
 export default App;
