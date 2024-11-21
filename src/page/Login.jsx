@@ -1,17 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { UserContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
-  // password handler
+  const { user, setUser } = useContext(UserContext);
+
+  // name handler
   const onChangeHandler = (event) => {
-    setPassword(event.target.value);
+    setName(event.target.value);
   };
 
   // submit handler
   const submitHandler = (event) => {
     event.preventDefault(event);
+  };
+
+  const handleSubmit = () => {
+    setUser({ name: name, email: email });
+    navigate("/");
   };
 
   return (
@@ -33,19 +43,23 @@ const Login = () => {
 
           <br />
           <div style={styles.divStyle}>
-            <label>Enter Your Password</label>
+            <label>Enter Your name</label>
             <br />
             <input
-              placeholder="Enter your password"
-              name="password"
-              value={password}
+              placeholder="Enter your name"
+              name="name"
+              value={name}
               onChange={onChangeHandler}
               style={styles.inputStyle}
-              type="password"
+              type="name"
             />
           </div>
 
-          <button type="submit" style={styles.buttonStyle}>
+          <button
+            type="submit"
+            style={styles.buttonStyle}
+            onClick={handleSubmit}
+          >
             Submit
           </button>
         </form>
