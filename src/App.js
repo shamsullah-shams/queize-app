@@ -19,7 +19,7 @@ const App = () => {
   // return <RouterProvider router={router} />;
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </UserContext.Provider>
   );
 };
