@@ -25,67 +25,61 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <div style={{ width: "400px", margin: "auto", textAlign: "center" }}>
-        <form onSubmit={submitHandler}>
-          <h1>Login</h1>
-          <div style={styles.divStyle}>
-            <label>Enter Your Email</label>
-            <br />
-            <input
-              placeholder="Enter your Email"
-              name="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              style={styles.inputStyle}
-            />
-          </div>
-
-          <br />
-          <div style={styles.divStyle}>
-            <label>Enter Your name</label>
-            <br />
-            <input
-              placeholder="Enter your name"
-              name="name"
-              value={name}
-              onChange={onChangeHandler}
-              style={styles.inputStyle}
-              type="name"
-            />
-          </div>
-
-          <button
-            type="submit"
-            style={styles.buttonStyle}
-            onClick={handleSubmit}
-          >
-            Submit
-          </button>
-        </form>
+    <div style={{ width: "400px", textAlign: "center" }}>
+      <div style={styles.divStyle}>
+        <label style={{ color: "white", marginTop: "20px" }}>
+          Enter Your Email
+        </label>
+        <br />
+        <input
+          placeholder="Enter your Email"
+          name="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          style={styles.inputStyle}
+        />
       </div>
+      <div style={styles.divStyle}>
+        <label style={{ color: "white", marginTop: "20px" }}>
+          Enter Your name
+        </label>
+        <br />
+        <input
+          placeholder="Enter your name"
+          name="name"
+          value={name}
+          onChange={onChangeHandler}
+          style={styles.inputStyle}
+          type="name"
+        />
+      </div>
+      <button type="submit" style={styles.buttonStyle} onClick={handleSubmit}>
+        Submit
+      </button>
     </div>
   );
 };
 
 const styles = {
   inputStyle: {
-    width: "100%",
-    marginTop: "10px",
     padding: "10px",
     borderRadius: "6px",
+    backgroundColor: "#333",
+    color: "white",
+    width: "94%",
   },
 
   divStyle: {
     textAlign: "left",
+    marginTop: "25px",
   },
   buttonStyle: {
     width: "100%",
     padding: "12px",
     borderRadius: "6px",
-    backgroundColor: "#3c5cfa",
-    borderColor: "#3c5cfa",
-    marginTop: "15px",
+    backgroundColor: "#333",
+    marginTop: "25px",
+    color: "white",
   },
 };
 
